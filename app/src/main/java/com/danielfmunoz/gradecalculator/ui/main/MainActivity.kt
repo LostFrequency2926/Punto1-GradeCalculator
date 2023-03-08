@@ -2,43 +2,65 @@ package com.danielfmunoz.gradecalculator.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.danielfmunoz.gradecalculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private var labGradeValue: Double = 0.0
+    private var proj1GradeValue: Double = 0.0
+    private var proj2GradeValue: Double = 0.0
+    private var finalProjGradeValue: Double = 0.0
+
     private lateinit var mainBinding: ActivityMainBinding
+    private  lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+
+        val calculateObserver = Observer<Double> {calculate ->
+            mainBinding.resultText.text = "La nota final del curso es: ${String.format("%.2f", calculate.toDouble())}"
+        }
+        mainViewModel.calculate.observe(this, calculateObserver)
+
         setContentView(mainBinding.root)
 
         val calculateButton = mainBinding.calculateButton
+
         calculateButton.setOnClickListener {
             calculateGrade()
         }
     }
 
     private fun calculateGrade() {
-        val labGradeValue = mainBinding.labGrade.text.toString().toDoubleOrNull()
-        val proj1GradeValue = mainBinding.proj1Grade.text.toString().toDoubleOrNull()
-        val proj2GradeValue = mainBinding.proj2Grade.text.toString().toDoubleOrNull()
-        val finalProjGradeValue = mainBinding.finalProjGrade.text.toString().toDoubleOrNull()
 
-        if (labGradeValue == null || proj1GradeValue == null || proj2GradeValue == null || finalProjGradeValue == null) {
-            mainBinding.resultText.text = "Ingrese valores válidos para todas las notas."
-            return
-        }
 
-        val labWeight = 0.6
-        val proj1Weight = 0.07
-        val proj2Weight = 0.08
-        val finalProjWeight = 0.25
+        if (mainViewModel.realizarValidateNulls(mainBinding.labGrade.text.toString(), mainBinding.proj1Grade.text.toString(),mainBinding.proj2Grade.text.toString(), mainBinding.finalProjGrade.text.toString() )) {
+            leerDatos()
+            if(mainViewModel.realizarValidate(labGradeValue,proj1GradeValue,proj2GradeValue,finalProjGradeValue)){
+                mainViewModel.realizarCalculate(labGradeValue, proj1GradeValue, proj2GradeValue,finalProjGradeValue)
+            }else{
+                Toast.makeText(this, "No se permiten notas superiores a 5.0", Toast.LENGTH_SHORT).show()
+                mainBinding.resultText.text = ""
+            }
 
-        val grade =
-            labGradeValue * labWeight + proj1GradeValue * proj1Weight + proj2GradeValue * proj2Weight + finalProjGradeValue * finalProjWeight
+        } else {
+                Toast.makeText(this, "Por favor registrar todas las notas", Toast.LENGTH_SHORT).show()
+            mainBinding.resultText.text = ""
+            }
 
-        mainBinding.resultText.text = "La nota final del curso es: ${String.format("%.2f", grade)}"
     }
+
+    private fun leerDatos() {
+        labGradeValue = mainBinding.labGrade.text.toString().toDouble()
+        proj1GradeValue = mainBinding.proj1Grade.text.toString().toDouble()
+        proj2GradeValue = mainBinding.proj2Grade.text.toString().toDouble()
+        finalProjGradeValue = mainBinding.finalProjGrade.text.toString().toDouble()
+    }
+
 }

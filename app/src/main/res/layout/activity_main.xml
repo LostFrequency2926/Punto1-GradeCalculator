@@ -47,7 +47,7 @@
             android:id="@+id/proj1_grade_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nota del primer avance del proyecto final (7%):" />
+            android:text="@string/labgrade" />
 
         <EditText
             android:id="@+id/proj1_grade"
