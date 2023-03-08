@@ -1,0 +1,8 @@
+<resources>
+
+    <!-- Estilo de la ActionBar -->
+    <style name="Widget.Theme.GradeCalculator.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/secondaryColor</item>
+    </style>
+
+</resources>
