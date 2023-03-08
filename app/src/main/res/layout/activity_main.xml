@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryColor"
+    android:contentDescription="@string/description"
     android:orientation="vertical"
     android:paddingLeft="60dp"
     android:paddingRight="60dp"
@@ -15,6 +16,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
+        android:contentDescription="@string/description"
         android:src="@mipmap/ic_grade_calculator_round" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -27,13 +29,13 @@
             android:id="@+id/lab_grade_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nota de prácticas de laboratorio (60%):" />
+            android:text="@string/practGrades" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/lab_grade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            android:hint="@string/emptyGrade" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -47,13 +49,14 @@
             android:id="@+id/proj1_grade_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/labgrade" />
+            android:text="@string/proj1Grades" />
 
-        <EditText
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/proj1_grade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            android:hint="@string/emptyGrade" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -67,13 +70,13 @@
             android:id="@+id/proj2_grade_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nota del segundo avance del proyecto final (8%):" />
+            android:text="@string/proj2Grades" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/proj2_grade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            android:hint="@string/emptyGrade" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -86,22 +89,29 @@
             android:id="@+id/final_proj_grade_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nota de entrega del proyecto final (25%):" />
+            android:text="@string/labgrade" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/final_proj_grade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            android:hint="@string/emptyGrade" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/calculate_button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/secondaryColor"
-        android:text="Calcular" />
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/calculate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/secondaryColor"
+            android:text="@string/calculate" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/result_text"

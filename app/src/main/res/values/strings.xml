@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Grade Calculator</string>
-    <string name="labgrade">Nota del primer avance del proyecto final (7%):</string>
+    <string name="labgrade">Nota de entrega del proyecto final (25%):</string>
 
     <string name="validGrades">Ingrese valores válidos para todas las notas.</string>
+    <string name="description">ppal image</string>
+    <string name="practGrades">Nota de prácticas de laboratorio (60%):</string>
+    <string name="proj2Grades">Nota del segundo avance del proyecto final (8%):</string>
+    <string name="proj1Grades">Nota del primer avance del proyecto final (8%):</string>
+    <string name="calculate">Calcular</string>
+    <string name="hintProjFinal">Nota Proyecto Final</string>
+    <string name="proj1_grade_description">Nota entregable 1 Proyecto Final</string>
+    <string name="emptyGrade"> </string>
 </resources>
