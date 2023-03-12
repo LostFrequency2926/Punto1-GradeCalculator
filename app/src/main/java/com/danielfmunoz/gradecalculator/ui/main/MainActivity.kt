@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculateGrade() {
 
-
         if (mainViewModel.realizarValidateNulls(mainBinding.labGrade.text.toString(), mainBinding.proj1Grade.text.toString(),mainBinding.proj2Grade.text.toString(), mainBinding.finalProjGrade.text.toString() )) {
             leerDatos()
             if(mainViewModel.realizarValidate(labGradeValue,proj1GradeValue,proj2GradeValue,finalProjGradeValue)){
