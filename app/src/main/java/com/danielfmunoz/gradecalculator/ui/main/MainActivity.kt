@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.danielfmunoz.gradecalculator.R
 import com.danielfmunoz.gradecalculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +25,8 @@ class MainActivity : AppCompatActivity() {
         mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         val calculateObserver = Observer<Double> {calculate ->
-            mainBinding.resultText.text = "La nota final del curso es: ${String.format("%.2f", calculate.toDouble())}"
+            mainBinding.resultText.text = "${getString(R.string.finalGrade)} ${String.format("%.2f", calculate.toDouble())}"
+
         }
         mainViewModel.calculate.observe(this, calculateObserver)
 
@@ -44,12 +46,12 @@ class MainActivity : AppCompatActivity() {
             if(mainViewModel.realizarValidate(labGradeValue,proj1GradeValue,proj2GradeValue,finalProjGradeValue)){
                 mainViewModel.realizarCalculate(labGradeValue, proj1GradeValue, proj2GradeValue,finalProjGradeValue)
             }else{
-                Toast.makeText(this, "No se permiten notas superiores a 5.0", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.maximunGrade), Toast.LENGTH_SHORT).show()
                 mainBinding.resultText.text = ""
             }
 
         } else {
-                Toast.makeText(this, "Por favor registrar todas las notas", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.fillAllGrades), Toast.LENGTH_SHORT).show()
             mainBinding.resultText.text = ""
             }
 

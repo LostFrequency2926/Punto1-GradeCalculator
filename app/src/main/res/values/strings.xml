@@ -11,4 +11,7 @@
     <string name="hintProjFinal">Nota Proyecto Final</string>
     <string name="proj1_grade_description">Nota entregable 1 Proyecto Final</string>
     <string name="emptyGrade"> </string>
+    <string name="fillAllGrades">Por favor registrar todas las notas</string>
+    <string name="maximunGrade">No se permiten notas superiores a 5.0</string>
+    <string name="finalGrade">La nota final del curso es: </string>
 </resources>
