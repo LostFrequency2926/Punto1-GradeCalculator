@@ -2,6 +2,7 @@ package com.danielfmunoz.gradecalculator.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.danielfmunoz.gradecalculator.R
 import com.danielfmunoz.gradecalculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         val finalProjGradeValue = mainBinding.finalProjGrade.text.toString().toDoubleOrNull()
 
         if (labGradeValue == null || proj1GradeValue == null || proj2GradeValue == null || finalProjGradeValue == null) {
-            mainBinding.resultText.text = "Ingrese valores válidos para todas las notas."
+            mainBinding.resultText.text = getString(R.string.invalidGrade)
             return
         }
 

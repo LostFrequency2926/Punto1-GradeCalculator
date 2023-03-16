@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Grade Calculator</string>
+    <string name="invalidGrade">Ingrese valores válidos para todas las notas.</string>
 </resources>
